@@ -1,14 +1,14 @@
 # Linux Programming — Summative Assessment
 
-This repository holds five independent Linux systems-programming projects. Each one lives in its own directory and has its own source code, build files, tests, evidence, a detailed `README.md` and an analytical report in `.docx` format.
+This repository holds five independent Linux systems-programming projects. Each one lives in its own directory and has its own source code, build files, tests, evidence, a detailed `README.md` and an analytical report in `.pdf` format.
 
 | # | Project | Language / key techniques | Report |
 |---|---------|---------------------------|--------|
-| 1 | [Investigating and Reverse Engineering an ELF Executable](Project1/README.md) | C · `readelf` · `objdump` · `strace` · `gdb` · PLT/GOT lazy binding | [`Project1_ELF_Analysis_Report.docx`](Project1/Project1_ELF_Analysis_Report.pdf) |
-| 2 | [Assembly-Based Sensor Data Validation and Analysis](Project2/README.md) | x86-64 NASM · raw Linux syscalls (no libc) · chunked streaming parser | [`Project2_Report.docx`](Project2/Project2_Report.pdf) |
-| 3 | [Python C Extension for IoT Sensor Data Filtering](Project3/README.md) | C + Python C API · reference counting · setuptools · benchmarks | [`Project3_Report.docx`](Project3/Project3_Report.pdf) |
-| 4 | [Multithreaded Library Book Reservation System](Project4/README.md) | C · POSIX threads · mutex + condition variables · circular buffer | [`Project4_Report.docx`](Project4/Project4_Report.pdf) |
-| 5 | [Concurrent TCP University Event Registration System](Project5/README.md) | C · TCP sockets · thread per client · race-free registration | [`Project5_Report.docx`](Project5/Project5_Report.pdf) |
+| 1 | [Investigating and Reverse Engineering an ELF Executable](Project1/README.md) | C · `readelf` · `objdump` · `strace` · `gdb` · PLT/GOT lazy binding | [`Project1_ELF_Analysis_Report.pdf`](Project1/Project1_ELF_Analysis_Report.pdf) |
+| 2 | [Assembly-Based Sensor Data Validation and Analysis](Project2/README.md) | x86-64 NASM · raw Linux syscalls (no libc) · chunked streaming parser | [`Project2_Report.pdf`](Project2/Project2_Report.pdf) |
+| 3 | [Python C Extension for IoT Sensor Data Filtering](Project3/README.md) | C + Python C API · reference counting · setuptools · benchmarks | [`Project3_Report.pdf`](Project3/Project3_Report.pdf) |
+| 4 | [Multithreaded Library Book Reservation System](Project4/README.md) | C · POSIX threads · mutex + condition variables · circular buffer | [`Project4_Report.pdf`](Project4/Project4_Report.pdf) |
+| 5 | [Concurrent TCP University Event Registration System](Project5/README.md) | C · TCP sockets · thread per client · race-free registration | [`Project5_Report.pdf`](Project5/Project5_Report.pdf) |
 
 ---
 
