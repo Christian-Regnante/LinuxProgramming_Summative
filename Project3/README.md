@@ -2,7 +2,7 @@
 
 `sensor_processor` is a native extension module written in C against the Python C API. It filters and analyses sensor readings from a smart-agriculture platform, and it does all of the numerical work in C using `double`.
 
-The detailed documentation, analysis and evidence are in **`Project3_Report.docx`**.
+The detailed documentation, analysis and evidence are in **`Project3_Report.pdf`**.
 
 ---
 
@@ -18,7 +18,6 @@ The detailed documentation, analysis and evidence are in **`Project3_Report.docx
 | `capture_evidence.sh` | Regenerates everything in `evidence/` |
 | `Makefile` | Shortcuts: `make`, `make test`, `make demo`, `make bench`, `make sanitize`, `make evidence`, `make clean` |
 | `evidence/` | Captured build log, demo output, test results, benchmark and sanitizer run |
-| `report/` | Generator for the `.docx` report |
 
 ## 2. Requirements
 
@@ -157,9 +156,3 @@ The functions that return large lists (`filter_readings`, `moving_average`) gain
 - **Accuracy:** sums use Neumaier compensated summation. After 100,000 alternating ±10¹⁵ values, a window of 0.1s still averages to exactly 0.1.
 - **Calling conventions:** single-argument functions use `METH_O`, which avoids building an argument tuple. The others use `METH_VARARGS` with `PyArg_ParseTuple`.
 
-## 9. Rebuilding the report
-
-```bash
-make evidence
-cd report && npm install && node build_report.js     # writes ../Project3_Report.docx
-```

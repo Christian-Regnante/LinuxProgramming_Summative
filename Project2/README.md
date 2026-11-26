@@ -2,7 +2,7 @@
 
 An x86-64 assembly program (NASM syntax) that reads `sensor_readings.txt` and validates each measurement, one per line. It then prints six statistics: total records, valid, invalid, sum, minimum and maximum. It calls no C library: all file handling and console output go straight to the Linux kernel through the `syscall` instruction.
 
-The detailed documentation and execution evidence are in **`Project2_Report.docx`**.
+The detailed documentation and execution evidence are in **`Project2_Report.pdf`**.
 
 ---
 
@@ -20,7 +20,6 @@ The detailed documentation and execution evidence are in **`Project2_Report.docx
 | `tests/gdb_registers.gdb` | GDB script that shows the parser registers and memory counters for each record |
 | `tests/capture_evidence.sh` | Regenerates everything in `evidence/` |
 | `evidence/` | Captured terminal runs, strace traces, test and fuzz results |
-| `report/build_report.js` | Generates the `.docx` report |
 
 ## 2. Environment
 
@@ -189,9 +188,3 @@ Key techniques:
 - **Integer to text:** repeated `div` by 10, storing the digits backwards.
 - **Partial writes:** `write()` is retried until every byte is written.
 
-## 9. Rebuilding the report
-
-```bash
-make evidence
-cd report && npm install && node build_report.js   # writes ../Project2_Report.docx
-```

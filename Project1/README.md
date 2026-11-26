@@ -2,7 +2,7 @@
 
 A small C program that simulates a bank transaction processing system. The repository holds two builds of it: a stripped ELF executable and a debug executable. It also holds the analysis of both, done with `readelf`, `objdump`, `strace` and `gdb`.
 
-The full analysis (Parts B, C and D) is in **`Project1_ELF_Analysis_Report.docx`**.
+The full analysis (Parts B, C and D) is in **`Project1_ELF_Analysis_Report.pdf`**.
 
 ---
 
@@ -18,8 +18,6 @@ The full analysis (Parts B, C and D) is in **`Project1_ELF_Analysis_Report.docx`
 | `scripts/dynamic_analysis.sh` | Part C: `strace` runs → `evidence/C*.txt` |
 | `scripts/gdb_analysis.sh` | Part D: runs `scripts/gdb_commands.gdb` and `scripts/gdb_lazy_binding.gdb` → `evidence/D_gdb_session.txt`, `evidence/B6_gdb_lazy_binding.txt` |
 | `evidence/` | Raw command output quoted in the report |
-| `report/build_report.js` | Generates the `.docx` report from `evidence/` |
-| `Project1_ELF_Analysis_Report.docx` | **Analysis report** (deliverable) |
 
 ## 2. Environment and prerequisites
 
@@ -33,7 +31,6 @@ These are the versions used to produce the evidence (`evidence/00_environment.tx
 | strace | 7.2 |
 | GDB | 18.1 |
 | glibc | 2.44 |
-| Node.js | 26 (needed only to rebuild the report) |
 
 On Debian/Ubuntu, install the tools with `sudo apt install build-essential binutils strace gdb`. On Arch, use `sudo pacman -S base-devel strace gdb`.
 
@@ -168,18 +165,3 @@ $ gdb -q ./program_debug
 | System calls | 17–18 distinct. `calloc` → one `brk` extension; `printf` → `write(1, …)` (15 calls on a tty, 1 when piped); termination → `exit_group(0)` |
 | Memory | Globals at fixed image offsets; heap records at `0x55555555a020` in `[heap]`; locals at `0x7fffffffbd..` in `[stack]` |
 
-## 8. Rebuilding the report
-
-```bash
-make analysis                  # refresh the evidence first
-cd report && npm install       # one-time: installs the 'docx' package locally
-node build_report.js           # writes ../Project1_ELF_Analysis_Report.docx
-```
-
-Every excerpt in the report is read from `evidence/` when the report is built, so the report always matches the binaries that were actually analysed.
-
-## 9. Notes
-
-- Under GDB, addresses appear as `0x5555555…`. GDB disables ASLR, so the PIE always loads at base `0x555555554000`. Outside GDB the base changes on every run.
-- GCC replaces `printf("text\n")` calls that have no format specifiers with `puts`, which is why `puts` shows up among the imports.
-- GCC adds a stack canary (`fs:0x28` / `__stack_chk_fail`) to `main` by default because `main` takes the address of its local variables.

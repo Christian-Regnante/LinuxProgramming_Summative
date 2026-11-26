@@ -7,7 +7,7 @@ This program simulates a library reservation desk with POSIX threads. It has thr
 
 All shared state is protected by a `pthread_mutex_t`, and the threads coordinate through `pthread_cond_t` condition variables.
 
-The design discussion, analysis and full evidence are in **`Project4_Report.docx`**.
+The design discussion, analysis and full evidence are in **`Project4_Report.pdf`**.
 
 ---
 
@@ -21,7 +21,6 @@ The design discussion, analysis and full evidence are in **`Project4_Report.docx
 | `tests/tsan_negative_control.sh` | Shows that ThreadSanitizer *does* catch a deliberately injected race |
 | `capture_evidence.sh` | Regenerates everything in `evidence/` |
 | `evidence/` | The full 46-second run, the TSan runs, stress-test results and an strace summary |
-| `report/` | The report generator and the timeline charts |
 
 ## 2. Requirements
 
@@ -140,10 +139,3 @@ make evidence                     # regenerate all of evidence/ (~80 s)
 - **Negative control:** the script copies the source and moves one `sys.submitted++` outside the mutex. TSan then reports the race between the producer's unlocked write and the monitor's locked read, so the clean result above is meaningful.
 - **Stress test:** time scales down to 0.002 make the thread interleavings vary widely. Every run must terminate on its own, exit 0, pass all 5 invariants, never log a queue size above 5, and approve only even IDs.
 - **System calls:** `strace -f -c` shows 3 `clone3` calls (the threads), 30 `clock_nanosleep` calls (15 submissions + 15 processing delays), and `futex` calls, which are the kernel side of blocking mutex and condition-variable waits.
-
-## 8. Rebuilding the report
-
-```bash
-make evidence
-cd report && python3 make_charts.py && npm install && node build_report.js   # writes ../Project4_Report.docx
-```

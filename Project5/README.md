@@ -2,7 +2,7 @@
 
 A client–server system in C. Students connect to a central server over TCP, authenticate with their student ID, view the university events and register for them. The server handles every client in its own POSIX thread and protects the shared event records with mutexes. Even when many students compete for the **last place** at the same instant, the capacity is never exceeded.
 
-The design discussion, protocol specification, analysis and full evidence are in **`Project5_Report.docx`**.
+The design discussion, protocol specification, analysis and full evidence are in **`Project5_Report.pdf`**.
 
 ---
 
@@ -21,7 +21,6 @@ The design discussion, protocol specification, analysis and full evidence are in
 | `tests/tsan_check.sh` | Runs the ThreadSanitizer build of the server under a mixed concurrent workload |
 | `tests/run_demo.sh` | The Part D demonstration: writes a transcript for every required scenario to `evidence/demo/` |
 | `capture_evidence.sh` | Regenerates everything in `evidence/` |
-| `report/` | The report generator and its diagrams |
 
 ## 2. Requirements
 
@@ -181,9 +180,3 @@ make demo       # tests/run_demo.sh: transcripts for every Part D scenario in ev
 
 **ThreadSanitizer finding:** an early version used `volatile sig_atomic_t` for the shutdown flag, which the signal handler writes and the session threads read. TSan reported this as a data race. The flag is now a lock-free C11 `atomic_int`, and repeated TSan runs report no races.
 
-## 9. Rebuilding the report
-
-```bash
-make evidence
-cd report && npm install && node build_report.js      # writes ../Project5_Report.docx
-```
