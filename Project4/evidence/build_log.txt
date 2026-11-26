@@ -1,0 +1,9 @@
+$ gcc --version | sed -n 1p; uname -srm
+gcc (GCC) 16.2.1 20260810
+Linux 7.2.15-1-omarchy x86_64
+
+$ make clean && make all library_reservation_tsan
+gcc -Wall -Wextra -O2 -pthread -o library_reservation library_reservation.c
+gcc -Wall -Wextra -O1 -g -fsanitize=thread -pthread -o library_reservation_tsan library_reservation.c
+
+Compiler warnings: 0

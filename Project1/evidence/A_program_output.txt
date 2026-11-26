@@ -1,0 +1,16 @@
+=== Bank Transaction Processing System ===
+Opening balance        :    1000.00
+
+Transaction 1001: DEPOSIT        500.00  -> balance    1500.00
+Transaction 1002: WITHDRAWAL     200.00  -> balance    1300.00
+Transaction 1003: DEPOSIT        250.75  -> balance    1550.75
+Transaction 1004: WITHDRAWAL    1200.50  -> balance     350.25
+Transaction 1005: WITHDRAWAL     900.00  -> REJECTED (insufficient funds)
+Transaction 1006: DEPOSIT        125.25  -> balance     475.50
+
+========== Account Summary ==========
+Transactions processed : 6
+Total deposits         :     876.00
+Total withdrawals      :    1400.50
+Final account balance  :     475.50
+=====================================

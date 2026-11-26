@@ -1,0 +1,1 @@
+Fuzz OK: 500 random files agree with the reference (89 of them larger than the 4096-byte read buffer).

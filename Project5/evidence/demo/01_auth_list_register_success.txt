@@ -1,0 +1,28 @@
+$ ./client 127.0.0.1 34201
+Connected to 127.0.0.1:34201
+University Event Registration Server - please authenticate
+
+Enter your student ID: S1001
+Authentication successful. Welcome, Amina Uwase (S1001)!
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              0 / 5        5 places left
+  102   Cybersecurity Seminar    0 / 4        4 places left
+  103   Research Conference      0 / 6        6 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 2
+Enter the ID of the event to register for: 101
+>> SUCCESS: you are registered for 101 AI Workshop (place 1 of 5).
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 3
+
+Your registrations:
+  - 101 AI Workshop
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 0
+Registration session closed. Goodbye, S1001.
+[client exit status: 0]

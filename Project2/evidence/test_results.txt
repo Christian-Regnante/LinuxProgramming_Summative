@@ -1,0 +1,22 @@
+== Data cases ==
+  PASS  01_task_example_lf
+  PASS  02_task_example_crlf
+  PASS  03_mixed_line_endings
+  PASS  04_empty_lines
+  PASS  05_no_valid_values
+  PASS  06_empty_file
+  PASS  07_no_trailing_newline
+  PASS  08_boundaries_and_formats
+  PASS  09_stray_carriage_return
+  PASS  10_only_newlines
+  PASS  11_single_value_no_newline
+  PASS  12_large_file_over_buffer
+  PASS  13_valid_record_split_across_reads
+  PASS  14_crlf_split_across_reads
+== Default file (no argument -> sensor_readings.txt) ==
+  PASS  default_sensor_readings
+== Error handling ==
+  PASS  open_error_missing_file
+  PASS  read_error_directory
+
+Result: 17 passed, 0 failed

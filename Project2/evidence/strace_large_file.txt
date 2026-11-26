@@ -1,0 +1,8 @@
+open("tests/cases/12_large_file_over_buffer.txt", O_RDONLY) = 3
+read(3, "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n"..., 4096) = 4096
+read(3, "62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72"..., 4096) = 4096
+read(3, "5\n116\n117\n118\n119\n120\n121\n122\n12"..., 4096) = 1608
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+exit(0)                                 = ?
++++ exited with 0 +++

@@ -1,0 +1,10 @@
+execve("./sensor_stats", ["./sensor_stats", "missing.txt"], 0x7fffa1228d68 /* 231 vars */) = 0
+open("missing.txt", O_RDONLY)           = -1 ENOENT (No such file or directory)
+write(2, "Error: cannot open file '", 25) = 25
+write(2, "missing.txt", 11)             = 11
+write(2, "' (errno ", 9)                = 9
+write(2, "2", 1)                        = 1
+write(2, ": No such file or directory", 27) = 27
+write(2, ")\n", 2)                      = 2
+exit(1)                                 = ?
++++ exited with 1 +++

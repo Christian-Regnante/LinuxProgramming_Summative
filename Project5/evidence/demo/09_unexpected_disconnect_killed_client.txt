@@ -1,0 +1,20 @@
+$ ./client 127.0.0.1 34201   (killed with SIGKILL after registering)
+Connected to 127.0.0.1:34201
+University Event Registration Server - please authenticate
+
+Enter your student ID: S1011
+Authentication successful. Welcome, Kevin Niyonzima (S1011)!
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    4 / 4        FULL
+  103   Research Conference      1 / 6        5 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 2
+Enter the ID of the event to register for: 103
+>> SUCCESS: you are registered for 103 Research Conference (place 2 of 6).
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: [client process 87086 killed with SIGKILL - no QUIT was sent]

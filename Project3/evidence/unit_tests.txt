@@ -1,0 +1,42 @@
+========================================================================
+ Unit tests
+========================================================================
+test_boundaries_are_not_outliers (__main__.TestCountOutliers.test_boundaries_are_not_outliers) ... ok
+test_brief_example (__main__.TestCountOutliers.test_brief_example) ... ok
+test_consistent_with_filter (__main__.TestCountOutliers.test_consistent_with_filter) ... ok
+test_empty (__main__.TestCountOutliers.test_empty) ... ok
+test_bounds_are_inclusive (__main__.TestFilterReadings.test_bounds_are_inclusive) ... ok
+test_brief_example (__main__.TestFilterReadings.test_brief_example) ... ok
+test_empty (__main__.TestFilterReadings.test_empty) ... ok
+test_nothing_in_range (__main__.TestFilterReadings.test_nothing_in_range) ... ok
+test_returns_new_list_and_keeps_order (__main__.TestFilterReadings.test_returns_new_list_and_keeps_order) ... ok
+test_tuple_and_int_input_returns_floats (__main__.TestFilterReadings.test_tuple_and_int_input_returns_floats) ... ok
+test_input_is_not_modified (__main__.TestInputValidation.test_input_is_not_modified) ... ok
+test_invalid_range_arguments (__main__.TestInputValidation.test_invalid_range_arguments) ... ok
+test_non_finite_elements (__main__.TestInputValidation.test_non_finite_elements) ... ok
+test_non_numeric_elements (__main__.TestInputValidation.test_non_numeric_elements) ... ok
+test_unsupported_container_types (__main__.TestInputValidation.test_unsupported_container_types) ... ok
+test_brief_example (__main__.TestMaximumDifference.test_brief_example) ... ok
+test_empty (__main__.TestMaximumDifference.test_empty) ... ok
+test_negative_values (__main__.TestMaximumDifference.test_negative_values) ... ok
+test_single_value (__main__.TestMaximumDifference.test_single_value) ... ok
+test_brief_example (__main__.TestMovingAverage.test_brief_example) ... ok
+test_empty (__main__.TestMovingAverage.test_empty) ... ok
+test_invalid_windows (__main__.TestMovingAverage.test_invalid_windows) ... ok
+test_matches_naive_definition (__main__.TestMovingAverage.test_matches_naive_definition) ... ok
+test_no_drift_on_long_series (__main__.TestMovingAverage.test_no_drift_on_long_series) ... ok
+test_window_equals_length (__main__.TestMovingAverage.test_window_equals_length) ... ok
+test_window_one_is_identity (__main__.TestMovingAverage.test_window_one_is_identity) ... ok
+test_input_refcount_unchanged (__main__.TestReferenceCountsAndMemory.test_input_refcount_unchanged) ... ok
+test_no_memory_growth (__main__.TestReferenceCountsAndMemory.test_no_memory_growth) ... ok
+test_refcount_unchanged_on_error_paths (__main__.TestReferenceCountsAndMemory.test_refcount_unchanged_on_error_paths) ... ok
+test_above_average_is_strict (__main__.TestSensorSummary.test_above_average_is_strict) ... ok
+test_brief_example (__main__.TestSensorSummary.test_brief_example) ... ok
+test_empty (__main__.TestSensorSummary.test_empty) ... ok
+test_matches_python (__main__.TestSensorSummary.test_matches_python) ... ok
+test_types (__main__.TestSensorSummary.test_types) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 1.261s
+
+OK

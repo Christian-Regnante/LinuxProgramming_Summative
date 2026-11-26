@@ -1,0 +1,21 @@
+# Authorised students: ID,Full Name   (lines starting with # are ignored)
+S1001,Amina Uwase
+S1002,Brian Mugisha
+S1003,Claire Ingabire
+S1004,David Habimana
+S1005,Esther Mukamana
+S1006,Felix Nshuti
+S1007,Grace Umutoni
+S1008,Henry Kayitare
+S1009,Irene Mutesi
+S1010,James Ndayisaba
+S1011,Kevin Niyonzima
+S1012,Linda Uwimana
+S1013,Moses Gatete
+S1014,Nadia Isimbi
+S1015,Olivier Rukundo
+S1016,Patience Iradukunda
+S1017,Quentin Bizimana
+S1018,Rita Uwera
+S1019,Samuel Hakizimana
+S1020,Teta Keza

@@ -1,0 +1,40 @@
+round  1: 10 racers -> 1 registered (S1005), 9 rejected as full, final 4/4  PASS
+
+---- round 1: server log during the race ----
+  [19:56:12.552] client 127.0.0.1:41958 (S1001): REGISTERED for 102 Cybersecurity Seminar - seat 1/4
+  [19:56:12.646] client 127.0.0.1:41972 (S1002): REGISTERED for 102 Cybersecurity Seminar - seat 2/4
+  [19:56:12.739] client 127.0.0.1:41986 (S1003): REGISTERED for 102 Cybersecurity Seminar - seat 3/4
+  [19:56:12.842] client 127.0.0.1:42008 (S1005): REGISTERED for 102 Cybersecurity Seminar - seat 4/4
+  [19:56:12.842] client 127.0.0.1:42040 (S1008): event 102 FULL (4/4) - registration rejected
+  [19:56:12.842] client 127.0.0.1:41996 (S1007): event 102 FULL (4/4) - registration rejected
+  [19:56:12.843] client 127.0.0.1:42024 (S1011): event 102 FULL (4/4) - registration rejected
+  [19:56:12.843] client 127.0.0.1:42048 (S1010): event 102 FULL (4/4) - registration rejected
+  [19:56:12.843] client 127.0.0.1:42056 (S1004): event 102 FULL (4/4) - registration rejected
+  [19:56:12.843] client 127.0.0.1:42000 (S1013): event 102 FULL (4/4) - registration rejected
+  [19:56:12.843] client 127.0.0.1:42070 (S1012): event 102 FULL (4/4) - registration rejected
+  [19:56:12.843] client 127.0.0.1:42076 (S1006): event 102 FULL (4/4) - registration rejected
+  [19:56:12.844] client 127.0.0.1:42066 (S1009): event 102 FULL (4/4) - registration rejected
+---- round 1: final registration table ----
+  [19:56:12.845] final registrations:
+  [19:56:12.845]   101 AI Workshop            0/5  []
+  [19:56:12.845]   102 Cybersecurity Seminar  4/4  [S1001, S1002, S1003, S1005]
+  [19:56:12.845]   103 Research Conference    0/6  []
+---- round 1: the winner's client transcript (registration part) ----
+  Enter the ID of the event to register for: 102
+  >> SUCCESS: you are registered for 102 Cybersecurity Seminar (place 4 of 4).
+  
+---- round 1: a losing client's transcript (registration part) ----
+  Enter the ID of the event to register for: 102
+  >> NOT REGISTERED: the event is full - 102 Cybersecurity Seminar has reached its capacity of 4.
+  
+
+round  2: 10 racers -> 1 registered (S1004), 9 rejected as full, final 4/4  PASS
+round  3: 10 racers -> 1 registered (S1012), 9 rejected as full, final 4/4  PASS
+round  4: 10 racers -> 1 registered (S1010), 9 rejected as full, final 4/4  PASS
+round  5: 10 racers -> 1 registered (S1013), 9 rejected as full, final 4/4  PASS
+round  6: 10 racers -> 1 registered (S1007), 9 rejected as full, final 4/4  PASS
+round  7: 10 racers -> 1 registered (S1008), 9 rejected as full, final 4/4  PASS
+round  8: 10 racers -> 1 registered (S1006), 9 rejected as full, final 4/4  PASS
+round  9: 10 racers -> 1 registered (S1011), 9 rejected as full, final 4/4  PASS
+round 10: 10 racers -> 1 registered (S1004), 9 rejected as full, final 4/4  PASS
+Race test: 10 of 10 rounds passed

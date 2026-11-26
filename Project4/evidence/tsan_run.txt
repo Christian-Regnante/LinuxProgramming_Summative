@@ -1,0 +1,121 @@
+$ ./library_reservation_tsan --time-scale=0.1
+[  0.00s] MAIN     | Library reservation system starting: 15 requests, queue capacity 5
+[  0.00s] MAIN     | timings: submit 0.10s, process 0.30s, monitor every 0.40s (time scale 0.10)
+[  0.00s] STAFF    | queue EMPTY - waiting for reservations
+[  0.00s] STUDENT  | preparing reservation #1 for book 167 ...
+[  0.10s] STUDENT  | SUBMITTED reservation #1 (book 167)  queue 1/5
+[  0.10s] STUDENT  | preparing reservation #2 for book 127 ...
+[  0.10s] STAFF    | took reservation #1 (book 167) from queue after 0.0s  queue 0/5
+[  0.20s] STUDENT  | SUBMITTED reservation #2 (book 127)  queue 1/5
+[  0.20s] STUDENT  | preparing reservation #3 for book 125 ...
+[  0.30s] STUDENT  | SUBMITTED reservation #3 (book 125)  queue 2/5
+[  0.30s] STUDENT  | preparing reservation #4 for book 120 ...
+[  0.40s] MONITOR  | ------ System status report #1 ------
+[  0.40s] MONITOR  |   submitted  3 | processed  0 | approved  0 | rejected  0 | queue 2/5 [#2 #3]
+[  0.40s] STAFF    | REJECTED reservation #1 - book 167 is unavailable (odd ID)  (processed 1/15)
+[  0.40s] STAFF    | took reservation #2 (book 127) from queue after 0.2s  queue 1/5
+[  0.40s] STUDENT  | SUBMITTED reservation #4 (book 120)  queue 2/5
+[  0.40s] STUDENT  | preparing reservation #5 for book 179 ...
+[  0.50s] STUDENT  | SUBMITTED reservation #5 (book 179)  queue 3/5
+[  0.50s] STUDENT  | preparing reservation #6 for book 142 ...
+[  0.60s] STUDENT  | SUBMITTED reservation #6 (book 142)  queue 4/5
+[  0.60s] STUDENT  | preparing reservation #7 for book 109 ...
+[  0.70s] STAFF    | REJECTED reservation #2 - book 127 is unavailable (odd ID)  (processed 2/15)
+[  0.70s] STAFF    | took reservation #3 (book 125) from queue after 0.4s  queue 3/5
+[  0.70s] STUDENT  | SUBMITTED reservation #7 (book 109)  queue 4/5
+[  0.70s] STUDENT  | preparing reservation #8 for book 133 ...
+[  0.80s] MONITOR  | ------ System status report #2 ------
+[  0.80s] MONITOR  |   submitted  7 | processed  2 | approved  0 | rejected  2 | queue 4/5 [#4 #5 #6 #7]
+[  0.80s] STUDENT  | SUBMITTED reservation #8 (book 133)  queue 5/5
+[  0.81s] STUDENT  | preparing reservation #9 for book 117 ...
+[  0.91s] STUDENT  | queue FULL (5/5) - waiting to submit #9
+[  1.00s] STAFF    | REJECTED reservation #3 - book 125 is unavailable (odd ID)  (processed 3/15)
+[  1.00s] STAFF    | took reservation #4 (book 120) from queue after 0.6s  queue 4/5
+[  1.00s] STUDENT  | SUBMITTED reservation #9 (book 117)  queue 5/5
+[  1.00s] STUDENT  | preparing reservation #10 for book 166 ...
+[  1.11s] STUDENT  | queue FULL (5/5) - waiting to submit #10
+[  1.20s] MONITOR  | ------ System status report #3 ------
+[  1.20s] MONITOR  |   submitted  9 | processed  3 | approved  0 | rejected  3 | queue 5/5 [#5 #6 #7 #8 #9]
+[  1.30s] STAFF    | APPROVED reservation #4 - book 120 is available (even ID)  (processed 4/15)
+[  1.31s] STAFF    | took reservation #5 (book 179) from queue after 0.8s  queue 4/5
+[  1.31s] STUDENT  | SUBMITTED reservation #10 (book 166)  queue 5/5
+[  1.31s] STUDENT  | preparing reservation #11 for book 168 ...
+[  1.41s] STUDENT  | queue FULL (5/5) - waiting to submit #11
+[  1.60s] MONITOR  | ------ System status report #4 ------
+[  1.60s] MONITOR  |   submitted 10 | processed  4 | approved  1 | rejected  3 | queue 5/5 [#6 #7 #8 #9 #10]
+[  1.61s] STAFF    | REJECTED reservation #5 - book 179 is unavailable (odd ID)  (processed 5/15)
+[  1.61s] STAFF    | took reservation #6 (book 142) from queue after 1.0s  queue 4/5
+[  1.61s] STUDENT  | SUBMITTED reservation #11 (book 168)  queue 5/5
+[  1.61s] STUDENT  | preparing reservation #12 for book 132 ...
+[  1.71s] STUDENT  | queue FULL (5/5) - waiting to submit #12
+[  1.91s] STAFF    | APPROVED reservation #6 - book 142 is available (even ID)  (processed 6/15)
+[  1.91s] STAFF    | took reservation #7 (book 109) from queue after 1.2s  queue 4/5
+[  1.91s] STUDENT  | SUBMITTED reservation #12 (book 132)  queue 5/5
+[  1.91s] STUDENT  | preparing reservation #13 for book 113 ...
+[  2.00s] MONITOR  | ------ System status report #5 ------
+[  2.00s] MONITOR  |   submitted 12 | processed  6 | approved  2 | rejected  4 | queue 5/5 [#8 #9 #10 #11 #12]
+[  2.01s] STUDENT  | queue FULL (5/5) - waiting to submit #13
+[  2.21s] STAFF    | REJECTED reservation #7 - book 109 is unavailable (odd ID)  (processed 7/15)
+[  2.21s] STAFF    | took reservation #8 (book 133) from queue after 1.4s  queue 4/5
+[  2.21s] STUDENT  | SUBMITTED reservation #13 (book 113)  queue 5/5
+[  2.21s] STUDENT  | preparing reservation #14 for book 121 ...
+[  2.31s] STUDENT  | queue FULL (5/5) - waiting to submit #14
+[  2.40s] MONITOR  | ------ System status report #6 ------
+[  2.40s] MONITOR  |   submitted 13 | processed  7 | approved  2 | rejected  5 | queue 5/5 [#9 #10 #11 #12 #13]
+[  2.51s] STAFF    | REJECTED reservation #8 - book 133 is unavailable (odd ID)  (processed 8/15)
+[  2.51s] STAFF    | took reservation #9 (book 117) from queue after 1.5s  queue 4/5
+[  2.51s] STUDENT  | SUBMITTED reservation #14 (book 121)  queue 5/5
+[  2.51s] STUDENT  | preparing reservation #15 for book 164 ...
+[  2.61s] STUDENT  | queue FULL (5/5) - waiting to submit #15
+[  2.80s] MONITOR  | ------ System status report #7 ------
+[  2.80s] MONITOR  |   submitted 14 | processed  8 | approved  2 | rejected  6 | queue 5/5 [#10 #11 #12 #13 #14]
+[  2.81s] STAFF    | REJECTED reservation #9 - book 117 is unavailable (odd ID)  (processed 9/15)
+[  2.81s] STAFF    | took reservation #10 (book 166) from queue after 1.5s  queue 4/5
+[  2.81s] STUDENT  | SUBMITTED reservation #15 (book 164)  queue 5/5
+[  2.81s] STUDENT  | all 15 reservations submitted - student thread exiting
+[  3.11s] STAFF    | APPROVED reservation #10 - book 166 is available (even ID)  (processed 10/15)
+[  3.11s] STAFF    | took reservation #11 (book 168) from queue after 1.5s  queue 4/5
+[  3.20s] MONITOR  | ------ System status report #8 ------
+[  3.20s] MONITOR  |   submitted 15 | processed 10 | approved  3 | rejected  7 | queue 4/5 [#12 #13 #14 #15]
+[  3.41s] STAFF    | APPROVED reservation #11 - book 168 is available (even ID)  (processed 11/15)
+[  3.41s] STAFF    | took reservation #12 (book 132) from queue after 1.5s  queue 3/5
+[  3.60s] MONITOR  | ------ System status report #9 ------
+[  3.60s] MONITOR  |   submitted 15 | processed 11 | approved  4 | rejected  7 | queue 3/5 [#13 #14 #15]
+[  3.71s] STAFF    | APPROVED reservation #12 - book 132 is available (even ID)  (processed 12/15)
+[  3.71s] STAFF    | took reservation #13 (book 113) from queue after 1.5s  queue 2/5
+[  4.00s] MONITOR  | ------ System status report #10 ------
+[  4.00s] MONITOR  |   submitted 15 | processed 12 | approved  5 | rejected  7 | queue 2/5 [#14 #15]
+[  4.01s] STAFF    | REJECTED reservation #13 - book 113 is unavailable (odd ID)  (processed 13/15)
+[  4.01s] STAFF    | took reservation #14 (book 121) from queue after 1.5s  queue 1/5
+[  4.31s] STAFF    | REJECTED reservation #14 - book 121 is unavailable (odd ID)  (processed 14/15)
+[  4.31s] STAFF    | took reservation #15 (book 164) from queue after 1.5s  queue 0/5
+[  4.40s] MONITOR  | ------ System status report #11 ------
+[  4.40s] MONITOR  |   submitted 15 | processed 14 | approved  5 | rejected  9 | queue 0/5 []
+[  4.61s] STAFF    | APPROVED reservation #15 - book 164 is available (even ID)  (processed 15/15)
+[  4.61s] STAFF    | queue empty and student finished - staff thread exiting
+[  4.61s] MONITOR  | ------ FINAL report #12 ------
+[  4.61s] MONITOR  |   submitted 15 | processed 15 | approved  6 | rejected  9 | queue 0/5 []
+[  4.61s] MONITOR  | all reservations processed - monitor thread exiting
+[  4.61s] MAIN     | all threads joined
+
+=================== FINAL SUMMARY ===================
+ Reservations submitted      : 15
+ Reservations processed      : 15
+ Approved (even book ID)     : 6
+ Rejected (odd book ID)      : 9
+ Queue size at exit          : 0
+ Maximum queue occupancy     : 5 / 5
+ Producer waits (queue full) : 7
+ Consumer waits (queue empty): 1
+ Average time in queue       : 1.07 s
+ Total running time          : 4.61 s
+-----------------------------------------------------
+ [PASS] all 15 requests submitted
+ [PASS] all 15 requests processed
+ [PASS] approved + rejected == processed
+ [PASS] queue empty at exit
+ [PASS] queue never exceeded capacity 5
+=====================================================
+All mutexes and condition variables destroyed. Program terminated successfully.
+[exit status: 0]
+ThreadSanitizer warnings: 0

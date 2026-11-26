@@ -1,0 +1,177 @@
+$ nasm -v ; ld -v ; uname -srm
+NASM version 3.02 compiled on Jun 30 2026
+GNU ld (GNU Binutils) 2.47
+Linux 7.2.15-1-omarchy x86_64
+
+$ make clean && make
+make[1]: Entering directory '/home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project2'
+nasm -f elf64 -g -F dwarf sensor_stats.asm -o sensor_stats.o
+ld -o sensor_stats sensor_stats.o
+make[1]: Leaving directory '/home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project2'
+
+### Default input file (no argument)
+$ cat -A sensor_readings.txt
+25$
+30$
+invalid$
+18$
+42$
+-5$
+$
+100$
+0$
+101$
+23.5$
+76$
+$
+abc12$
+64$
+$ ./sensor_stats
+Total records: 15
+Valid measurements: 8
+Invalid measurements: 7
+Sum of valid measurements: 355
+Minimum measurement: 0
+Maximum measurement: 100
+[exit status: 0]
+
+### Task example, Unix LF endings
+$ cat -A tests/cases/01_task_example_lf.txt
+25$
+30$
+invalid$
+18$
+42$
+-5$
+$ ./sensor_stats tests/cases/01_task_example_lf.txt
+Total records: 6
+Valid measurements: 4
+Invalid measurements: 2
+Sum of valid measurements: 115
+Minimum measurement: 18
+Maximum measurement: 42
+[exit status: 0]
+
+### Task example, Windows CRLF endings
+$ cat -A tests/cases/02_task_example_crlf.txt
+25^M$
+30^M$
+invalid^M$
+18^M$
+42^M$
+-5^M$
+$ ./sensor_stats tests/cases/02_task_example_crlf.txt
+Total records: 6
+Valid measurements: 4
+Invalid measurements: 2
+Sum of valid measurements: 115
+Minimum measurement: 18
+Maximum measurement: 42
+[exit status: 0]
+
+### Mixed LF / CRLF, including an empty CRLF line
+$ cat -A tests/cases/03_mixed_line_endings.txt
+10^M$
+20$
+^M$
+30^M$
+$ ./sensor_stats tests/cases/03_mixed_line_endings.txt
+Total records: 4
+Valid measurements: 3
+Invalid measurements: 1
+Sum of valid measurements: 60
+Minimum measurement: 10
+Maximum measurement: 30
+[exit status: 0]
+
+### Empty lines are invalid records
+$ cat -A tests/cases/04_empty_lines.txt
+5$
+$
+$
+7$
+$ ./sensor_stats tests/cases/04_empty_lines.txt
+Total records: 4
+Valid measurements: 2
+Invalid measurements: 2
+Sum of valid measurements: 12
+Minimum measurement: 5
+Maximum measurement: 7
+[exit status: 0]
+
+### No valid measurements (min/max = N/A)
+$ cat -A tests/cases/05_no_valid_values.txt
+abc$
+-1$
+101$
+$
+$ ./sensor_stats tests/cases/05_no_valid_values.txt
+Total records: 4
+Valid measurements: 0
+Invalid measurements: 4
+Sum of valid measurements: 0
+Minimum measurement: N/A
+Maximum measurement: N/A
+[exit status: 0]
+
+### Empty file
+$ cat -A tests/cases/06_empty_file.txt
+(empty file - 0 bytes)
+$ ./sensor_stats tests/cases/06_empty_file.txt
+Total records: 0
+Valid measurements: 0
+Invalid measurements: 0
+Sum of valid measurements: 0
+Minimum measurement: N/A
+Maximum measurement: N/A
+[exit status: 0]
+
+### Last line without trailing newline
+$ cat -A tests/cases/07_no_trailing_newline.txt
+1$
+2$
+3$ ./sensor_stats tests/cases/07_no_trailing_newline.txt
+Total records: 3
+Valid measurements: 3
+Invalid measurements: 0
+Sum of valid measurements: 6
+Minimum measurement: 1
+Maximum measurement: 3
+[exit status: 0]
+
+### Boundaries and malformed numbers
+$ cat -A tests/cases/08_boundaries_and_formats.txt
+0$
+100$
+101$
+-0$
+007$
+ 5$
+5 $
+12a$
++5$
+-$
+99999999999999999999999$
+$ ./sensor_stats tests/cases/08_boundaries_and_formats.txt
+Total records: 11
+Valid measurements: 4
+Invalid measurements: 7
+Sum of valid measurements: 107
+Minimum measurement: 0
+Maximum measurement: 100
+[exit status: 0]
+
+### Error: file does not exist
+$ ./sensor_stats missing.txt
+Error: cannot open file 'missing.txt' (errno 2: No such file or directory)
+[exit status: 1]
+
+### Error: read() fails (path is a directory)
+$ ./sensor_stats tests/
+Error: failed while reading file 'tests/' (errno 21: Is a directory)
+[exit status: 2]
+
+### Error: default file missing (run from another directory)
+$ cd /tmp && <project>/Project2/sensor_stats
+Error: cannot open file 'sensor_readings.txt' (errno 2: No such file or directory)
+[exit status: 1]

@@ -1,0 +1,43 @@
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+
+Program stopped.
+0x00007ffff7fdf7e0 in ?? () from /lib64/ld-linux-x86-64.so.2
+
+=== stopped at first instruction (dynamic loader). Break at reconstructed main = base+0x1607 ===
+Breakpoint 1 at 0x555555555607
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, 0x0000555555555607 in ?? ()
+
+--- printf GOT slot (base+0x4018) BEFORE first call: points back into printf@plt (base+0x1066) ---
+0x555555558018 <printf@got.plt>:	0x0000555555555066
+
+--- calloc GOT slot (base+0x4020) BEFORE first call ---
+0x555555558020 <calloc@got.plt>:	0x0000555555555076
+
+=== break at reconstructed process_transactions = base+0x1299 (printf + calloc have now been called) ===
+Breakpoint 2 at 0x555555555299
+
+Breakpoint 2, 0x0000555555555299 in ?? ()
+
+--- printf GOT slot AFTER first call: now holds the real libc address ---
+0x555555558018 <printf@got.plt>:	0x00007ffff7c5b8b0
+printf in section .text of /usr/lib/libc.so.6
+
+--- calloc GOT slot AFTER first call ---
+0x555555558020 <calloc@got.plt>:	0x00007ffff7ca97b0
+calloc in section .text of /usr/lib/libc.so.6
+
+--- backtrace on a stripped binary: no names, only addresses ---
+#0  0x0000555555555299 in ?? ()
+#1  0x0000555555555686 in ?? ()
+#2  0x00007ffff7c27781 in ?? () from /usr/lib/libc.so.6
+#3  0x00007ffff7c278b9 in __libc_start_main () from /usr/lib/libc.so.6
+#4  0x00005555555550c5 in ?? ()
+[Inferior 1 (process 33198) killed]

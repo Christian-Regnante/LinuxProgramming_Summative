@@ -1,0 +1,32 @@
+$ ./client 127.0.0.1 34201
+Connected to 127.0.0.1:34201
+University Event Registration Server - please authenticate
+
+Enter your student ID: S1011
+Authentication successful. Welcome, Kevin Niyonzima (S1011)!
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    4 / 4        FULL
+  103   Research Conference      2 / 6        4 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 3
+
+Your registrations:
+  - 103 Research Conference
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 1
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    4 / 4        FULL
+  103   Research Conference      2 / 6        4 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 0
+Registration session closed. Goodbye, S1011.
+[client exit status: 0]

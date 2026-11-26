@@ -1,0 +1,7 @@
+Loaded instrumented module: build/asan/sensor_processor.cpython-314-x86_64-linux-gnu.so
+ASan/UBSan runtime functions referenced by it: 16
+----------------------------------------------------------------------
+Ran 34 tests in 3.283s
+
+OK
+Sanitizer run finished with no AddressSanitizer/UBSan reports.

@@ -1,0 +1,11 @@
+$ size sensor_stats ; file sensor_stats
+   text	   data	    bss	    dec	    hex	filename
+    978	    314	   4176	   5468	   155c	sensor_stats
+sensor_stats: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, with debug_info, not stripped
+
+$ readelf -h sensor_stats | grep -E 'Type|Entry'
+  Type:                              EXEC (Executable file)
+  Entry point address:               0x401000
+
+$ ldd sensor_stats
+	not a dynamic executable

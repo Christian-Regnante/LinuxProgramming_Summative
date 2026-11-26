@@ -1,0 +1,32 @@
+Injected change (diff of correct vs racy producer):
+    @@ -261,11 +261,11 @@
+             }
+             r.enqueued_at = elapsed_seconds();
+             enqueue(r);
+    -        sys.submitted++;
+             log_msg("STUDENT", "SUBMITTED reservation #%d (book %d)  queue %d/%d",
+                     r.reservation_id, r.book_id, sys.count, QUEUE_CAPACITY);
+             pthread_cond_signal(&sys.not_empty);   /* wake the consumer if asleep */
+             pthread_mutex_unlock(&sys.lock);
+    +        sys.submitted++;   /* INJECTED BUG: shared counter updated without the lock */
+         }
+     
+         /* Tell the consumer that no more requests will arrive. broadcast (not
+
+ThreadSanitizer data-race reports for the racy copy: 1
+First report (abridged):
+    WARNING: ThreadSanitizer: data race (pid=63154)
+      Read of size 4 at 0x557cf971f29c by thread T1 (mutexes: write M0):
+        #0 take_snapshot racy.c:217 (racy+0x242f)
+        #1 monitor_thread racy.c:363 (racy+0x3247)
+        #2 <null> <null> (libtsan.so.2+0x557e9)
+    
+      Previous write of size 4 at 0x557cf971f29c by thread T3:
+        #0 student_producer racy.c:268 (racy+0x2927)
+        #1 <null> <null> (libtsan.so.2+0x557e9)
+    
+      Location is global 'sys' of size 320 at 0x557cf971f240 (racy+0x729c)
+    
+      Mutex M0 (0x557cf971f2c8) created at:
+        #0 pthread_mutex_init <null> (libtsan.so.2+0x6003f)
+=> TSan detects an unlocked access, so the clean run of the real program is meaningful.

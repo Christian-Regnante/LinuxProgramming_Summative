@@ -1,0 +1,18 @@
+--- record 1 ---  r12 (value) = 25   r13 (flags) = 0x03   [HAS_CHAR=1 HAS_DIGIT=2 INVALID=4 NEGATIVE=8]
+    memory before update: total=0 valid=0 invalid=0 sum=0
+--- record 2 ---  r12 (value) = 30   r13 (flags) = 0x03   [HAS_CHAR=1 HAS_DIGIT=2 INVALID=4 NEGATIVE=8]
+    memory before update: total=1 valid=1 invalid=0 sum=25
+--- record 3 ---  r12 (value) = 0   r13 (flags) = 0x05   [HAS_CHAR=1 HAS_DIGIT=2 INVALID=4 NEGATIVE=8]
+    memory before update: total=2 valid=2 invalid=0 sum=55
+--- record 4 ---  r12 (value) = 18   r13 (flags) = 0x03   [HAS_CHAR=1 HAS_DIGIT=2 INVALID=4 NEGATIVE=8]
+    memory before update: total=3 valid=2 invalid=1 sum=55
+--- record 5 ---  r12 (value) = 42   r13 (flags) = 0x03   [HAS_CHAR=1 HAS_DIGIT=2 INVALID=4 NEGATIVE=8]
+    memory before update: total=4 valid=3 invalid=1 sum=73
+--- record 6 ---  r12 (value) = 5   r13 (flags) = 0x0b   [HAS_CHAR=1 HAS_DIGIT=2 INVALID=4 NEGATIVE=8]
+    memory before update: total=5 valid=4 invalid=1 sum=115
+Total records: 6
+Valid measurements: 4
+Invalid measurements: 2
+Sum of valid measurements: 115
+Minimum measurement: 18
+Maximum measurement: 42

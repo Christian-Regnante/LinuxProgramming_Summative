@@ -1,0 +1,9 @@
+server running on port 34201
+scenario 1/3/4 done
+scenario 2 done
+scenario 6 done
+scenario 7/8 done
+scenario 5 done
+scenario 9 done
+server stopped
+Transcripts written to evidence/demo/

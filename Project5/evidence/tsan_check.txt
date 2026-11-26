@@ -1,0 +1,7 @@
+workload: 20 concurrent sessions, 6 registrations accepted for event 103 (capacity 6), 14 refused, 6 abrupt disconnects
+sessions ended: 20 (unexpected disconnects: 6)
+final registrations:
+  101 AI Workshop            0/5  []
+  102 Cybersecurity Seminar  0/4  []
+  103 Research Conference    6/6  [S1019, S1005, S1001, S1002, S1004, S1006]
+ThreadSanitizer data-race reports: 0

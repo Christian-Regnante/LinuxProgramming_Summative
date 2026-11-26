@@ -1,0 +1,214 @@
+
+===== D1: setting breakpoints =====
+Breakpoint 1 at 0x10a0
+Breakpoint 2 at 0x160f: file program.c, line 125.
+Breakpoint 3 at 0x12b0: file program.c, line 90.
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000000010a0 <_start>
+2       breakpoint     keep y   0x000000000000160f in main at program.c:125
+3       breakpoint     keep y   0x00000000000012b0 in process_transactions at program.c:90
+
+===== Run -> stops at _start (ELF entry point) =====
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, 0x00005555555550a0 in _start ()
+rip            0x5555555550a0      0x5555555550a0 <_start>
+rsp            0x7fffffffbf10      0x7fffffffbf10
+=> 0x5555555550a0 <_start>:	endbr64
+   0x5555555550a4 <_start+4>:	xor    ebp,ebp
+   0x5555555550a6 <_start+6>:	mov    r9,rdx
+   0x5555555550a9 <_start+9>:	pop    rsi
+   0x5555555550aa <_start+10>:	mov    rdx,rsp
+   0x5555555550ad <_start+13>:	and    rsp,0xfffffffffffffff0
+
+--- backtrace at _start (no caller: first user-space instruction) ---
+#0  0x00005555555550a0 in _start ()
+
+===== continue -> stops at main =====
+
+Breakpoint 2, main () at program.c:125
+125	{
+#0  main () at program.c:125
+
+--- D3a: global variables (static storage) ---
+$1 = 1000
+$2 = (double *) 0x555555558048 <account_balance>
+$3 = 0
+$4 = (int *) 0x555555558054 <transaction_count>
+account_balance in section .data of /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug
+transaction_count in section .bss of /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug
+
+--- D3c: local variables on main's stack frame ---
+$5 = (double *) 0x7fffffffbdc0
+$6 = (double *) 0x7fffffffbdc8
+$7 = (void *) 0x7fffffffbdc0
+$8 = (void *) 0x7fffffffbde0
+Stack level 0, frame at 0x7fffffffbdf0:
+ rip = 0x55555555560f in main (program.c:125); saved rip = 0x7ffff7c27781
+ source language c.
+ Arglist at 0x7fffffffbde0, args: 
+ Locals at 0x7fffffffbde0, Previous frame's sp is 0x7fffffffbdf0
+ Saved registers:
+  rbp at 0x7fffffffbde0, rip at 0x7fffffffbde8
+
+===== continue -> stops in process_transactions =====
+
+Breakpoint 3, process_transactions (records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8) at program.c:90
+90	    for (int i = 0; i < n; i++) {
+
+--- D2: call stack ---
+#0  process_transactions (records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8) at program.c:90
+#1  0x0000555555555686 in main () at program.c:134
+Stack level 0, frame at 0x7fffffffbdc0:
+ rip = 0x5555555552b0 in process_transactions (program.c:90); saved rip = 0x555555555686
+ called by frame at 0x7fffffffbdf0
+ source language c.
+ Arglist at 0x7fffffffbdb0, args: records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8
+ Locals at 0x7fffffffbdb0, Previous frame's sp is 0x7fffffffbdc0
+ Saved registers:
+  rbp at 0x7fffffffbdb0, rip at 0x7fffffffbdb8
+
+--- parameters / locals of process_transactions ---
+records = 0x55555555a020
+n = 6
+total_deposits = 0x7fffffffbdc0
+total_withdrawals = 0x7fffffffbdc8
+i = 21845
+
+--- D3b: heap-allocated transaction records ---
+$9 = (struct Transaction *) 0x55555555a020
+$10 = {{
+    id = 1001,
+    amount = 500,
+    type = 68 'D'
+  }, {
+    id = 1002,
+    amount = 200,
+    type = 87 'W'
+  }, {
+    id = 1003,
+    amount = 250.75,
+    type = 68 'D'
+  }, {
+    id = 1004,
+    amount = 1200.5,
+    type = 87 'W'
+  }, {
+    id = 1005,
+    amount = 900,
+    type = 87 'W'
+  }, {
+    id = 1006,
+    amount = 125.25,
+    type = 68 'D'
+  }}
+$11 = 24
+
+--- raw heap bytes: 6 records x 24 bytes = 18 quadwords ---
+0x55555555a020:	0x00000000000003e9	0x407f400000000000
+0x55555555a030:	0x0000000000000044	0x00000000000003ea
+0x55555555a040:	0x4069000000000000	0x0000000000000057
+0x55555555a050:	0x00000000000003eb	0x406f580000000000
+0x55555555a060:	0x0000000000000044	0x00000000000003ec
+0x55555555a070:	0x4092c20000000000	0x0000000000000057
+0x55555555a080:	0x00000000000003ed	0x408c200000000000
+0x55555555a090:	0x0000000000000057	0x00000000000003ee
+0x55555555a0a0:	0x405f500000000000	0x0000000000000044
+
+--- record[0].amount decoded as double, record[0].type as char ---
+0x55555555a028:	500
+0x55555555a030:	68 'D'
+
+--- D3c: loop counter i (stack local) BEFORE initialisation: stack is not zeroed ---
+$12 = 21845
+$13 = (int *) 0x7fffffffbdac
+91	        if (records[i].type == TYPE_DEPOSIT) {
+
+--- after executing `int i = 0` ---
+$14 = 0
+
+--- step through two loop iterations watching the global change ---
+Hardware watchpoint 4: account_balance
+
+Hardware watchpoint 4: account_balance
+
+Old value = 1000
+New value = 1500
+process_transactions (records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8) at program.c:93
+93	            *total_deposits += records[i].amount;
+
+Hardware watchpoint 4: account_balance
+
+Old value = 1500
+New value = 1300
+process_transactions (records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8) at program.c:99
+99	                *total_withdrawals += records[i].amount;
+#0  process_transactions (records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8) at program.c:99
+#1  0x0000555555555686 in main () at program.c:134
+$15 = 1
+$16 = 500
+
+===== D4: which memory region does each address belong to? =====
+process 33186
+Mapped address spaces:
+
+Start Addr         End Addr           Size               Offset             Perms File 
+0x0000555555554000 0x0000555555555000 0x1000             0x0                r--p  /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug 
+0x0000555555555000 0x0000555555556000 0x1000             0x1000             r-xp  /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug 
+0x0000555555556000 0x0000555555557000 0x1000             0x2000             r--p  /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug 
+0x0000555555557000 0x0000555555558000 0x1000             0x2000             r--p  /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug 
+0x0000555555558000 0x0000555555559000 0x1000             0x3000             rw-p  /home/_regnante_/Projects/Linux_Programming/LinuxProgramming_Summative/Project1/program_debug 
+0x0000555555559000 0x000055555557b000 0x22000            0x0                rw-p  [heap] 
+0x00007ffff7c00000 0x00007ffff7c24000 0x24000            0x0                r--p  /usr/lib/libc.so.6 
+0x00007ffff7c24000 0x00007ffff7d9f000 0x17b000           0x24000            r-xp  /usr/lib/libc.so.6 
+0x00007ffff7d9f000 0x00007ffff7e15000 0x76000            0x19f000           r--p  /usr/lib/libc.so.6 
+0x00007ffff7e15000 0x00007ffff7e19000 0x4000             0x214000           r--p  /usr/lib/libc.so.6 
+0x00007ffff7e19000 0x00007ffff7e1b000 0x2000             0x218000           rw-p  /usr/lib/libc.so.6 
+0x00007ffff7e1b000 0x00007ffff7e23000 0x8000             0x0                rw-p   
+0x00007ffff7f85000 0x00007ffff7f8a000 0x5000             0x0                rw-p   
+0x00007ffff7f8a000 0x00007ffff7fb6000 0x2c000            0x0                r--p  /etc/ld.so.cache 
+0x00007ffff7fb6000 0x00007ffff7fba000 0x4000             0x0                r--p  [vvar] 
+0x00007ffff7fba000 0x00007ffff7fbc000 0x2000             0x0                r--p  [vvar_vclock] 
+0x00007ffff7fbc000 0x00007ffff7fbe000 0x2000             0x0                r-xp  [vdso] 
+0x00007ffff7fbe000 0x00007ffff7fbf000 0x1000             0x0                r--p  /usr/lib/ld-linux-x86-64.so.2 
+0x00007ffff7fbf000 0x00007ffff7fec000 0x2d000            0x1000             r-xp  /usr/lib/ld-linux-x86-64.so.2 
+0x00007ffff7fec000 0x00007ffff7ffb000 0xf000             0x2e000            r--p  /usr/lib/ld-linux-x86-64.so.2 
+0x00007ffff7ffb000 0x00007ffff7ffd000 0x2000             0x3d000            r--p  /usr/lib/ld-linux-x86-64.so.2 
+0x00007ffff7ffd000 0x00007ffff7ffe000 0x1000             0x3f000            rw-p  /usr/lib/ld-linux-x86-64.so.2 
+0x00007ffff7ffe000 0x00007ffff7fff000 0x1000             0x0                rw-p   
+0x00007ffffffdc000 0x00007ffffffff000 0x23000            0x0                rw-p  [stack] 
+0xffffffffff600000 0xffffffffff601000 0x1000             0x0                --xp  [vsyscall] 
+
+--- global / heap / stack addresses side by side ---
+$17 = (double *) 0x555555558048 <account_balance>
+$18 = (struct Transaction *) 0x55555555a020
+$19 = (int *) 0x7fffffffbdac
+
+--- total_deposits parameter: lives in THIS frame, points INTO main's frame ---
+$20 = (double **) 0x7fffffffbd88
+$21 = (double *) 0x7fffffffbdc0
+#1  0x0000555555555686 in main () at program.c:134
+134	    process_transactions(records, NUM_TRANSACTIONS,
+$22 = (double *) 0x7fffffffbdc0
+#0  process_transactions (records=0x55555555a020, n=6, total_deposits=0x7fffffffbdc0, total_withdrawals=0x7fffffffbdc8) at program.c:99
+99	                *total_withdrawals += records[i].amount;
+
+===== finish the program =====
+=== Bank Transaction Processing System ===
+Opening balance        :    1000.00
+
+Transaction 1001: DEPOSIT        500.00  -> balance    1500.00
+Transaction 1002: WITHDRAWAL     200.00  -> balance    1300.00
+Transaction 1003: DEPOSIT        250.75  -> balance    1550.75
+Transaction 1004: WITHDRAWAL    1200.50  -> balance     350.25
+Transaction 1005: WITHDRAWAL     900.00  -> REJECTED (insufficient funds)
+Transaction 1006: DEPOSIT        125.25  -> balance     475.50
+
+========== Account Summary ==========
+Transactions processed : 6
+Total deposits         :     876.00
+Total withdrawals      :    1400.50
+Final account balance  :     475.50
+=====================================
+[Inferior 1 (process 33186) exited normally]

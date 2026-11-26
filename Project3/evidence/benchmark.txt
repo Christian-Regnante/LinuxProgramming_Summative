@@ -1,0 +1,19 @@
+Python 3.14.8 on x86_64, 1,000,000 readings, best of 5 runs
+
+function                     C extension   pure Python   speed-up
+-----------------------------------------------------------------
+filter_readings                 23.12 ms      74.31 ms       3.2x
+count_outliers                   9.63 ms      52.22 ms       5.4x
+moving_average w=50             59.59 ms     199.05 ms       3.3x
+maximum_difference               5.93 ms      27.72 ms       4.7x
+sensor_summary                  13.84 ms      96.16 ms       6.9x
+
+moving_average on 100,000 readings, window 50:
+  C sliding window O(n)      :      4.17 ms
+  Python naive O(n*w)        :     96.87 ms   (23x slower)
+
+Accuracy: last 10-reading window of [1e15, -1e15] * 50000 + [0.1] * 10 (exact mean 0.1)
+  naive sliding sum (Python)          : 0.125
+  compensated sliding sum (C extension): 0.1
+
+All C results match the pure-Python results.

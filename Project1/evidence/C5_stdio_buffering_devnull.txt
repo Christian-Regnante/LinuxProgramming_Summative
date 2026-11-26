@@ -1,0 +1,6 @@
+fstat(3, {st_mode=S_IFREG|0644, st_size=177811, ...}) = 0
+fstat(3, {st_mode=S_IFREG|0755, st_size=2215072, ...}) = 0
+fstat(1, {st_mode=S_IFCHR|0666, st_rdev=makedev(0x1, 0x3), ...}) = 0
+ioctl(1, TCGETS2, 0x7ffea86dc490)       = -1 ENOTTY (Inappropriate ioctl for device)
+write(1, "=== Bank Transaction Processing "..., 681) = 681
++++ exited with 0 +++

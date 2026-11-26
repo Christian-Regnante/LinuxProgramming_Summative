@@ -1,0 +1,10 @@
+$ gcc --version | sed -n 1p; uname -srm
+gcc (GCC) 16.2.1 20260810
+Linux 7.2.15-1-omarchy x86_64
+
+$ make clean && make all server_tsan
+gcc -Wall -Wextra -O2 -pthread -o server server.c common.c
+gcc -Wall -Wextra -O2 -pthread -o client client.c common.c
+gcc -Wall -Wextra -O1 -g -fsanitize=thread -pthread -o server_tsan server.c common.c
+
+Compiler warnings: 0

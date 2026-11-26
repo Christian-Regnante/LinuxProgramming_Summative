@@ -1,0 +1,15 @@
+$ ./client 127.0.0.1 34201
+Connected to 127.0.0.1:34201
+University Event Registration Server - please authenticate
+
+Enter your student ID: X9999
+Authentication FAILED: Unknown student ID (attempt 1 of 3)
+
+Enter your student ID: S9999
+Authentication FAILED: Unknown student ID (attempt 2 of 3)
+
+Enter your student ID: abc!
+Authentication FAILED: Unknown student ID - too many failed attempts, disconnecting
+
+Registration session closed.
+[client exit status: 1]

@@ -1,0 +1,45 @@
+
+./program:     file format elf64-x86-64
+
+
+Disassembly of section .plt:
+
+0000000000001020 <free@plt-0x10>:
+    1020:	ff 35 ca 2f 00 00    	push   QWORD PTR [rip+0x2fca]        # 3ff0 <exit@plt+0x2f60>
+    1026:	ff 25 cc 2f 00 00    	jmp    QWORD PTR [rip+0x2fcc]        # 3ff8 <exit@plt+0x2f68>
+    102c:	0f 1f 40 00          	nop    DWORD PTR [rax+0x0]
+
+0000000000001030 <free@plt>:
+    1030:	ff 25 ca 2f 00 00    	jmp    QWORD PTR [rip+0x2fca]        # 4000 <exit@plt+0x2f70>
+    1036:	68 00 00 00 00       	push   0x0
+    103b:	e9 e0 ff ff ff       	jmp    1020 <free@plt-0x10>
+
+0000000000001040 <puts@plt>:
+    1040:	ff 25 c2 2f 00 00    	jmp    QWORD PTR [rip+0x2fc2]        # 4008 <exit@plt+0x2f78>
+    1046:	68 01 00 00 00       	push   0x1
+    104b:	e9 d0 ff ff ff       	jmp    1020 <free@plt-0x10>
+
+0000000000001050 <__stack_chk_fail@plt>:
+    1050:	ff 25 ba 2f 00 00    	jmp    QWORD PTR [rip+0x2fba]        # 4010 <exit@plt+0x2f80>
+    1056:	68 02 00 00 00       	push   0x2
+    105b:	e9 c0 ff ff ff       	jmp    1020 <free@plt-0x10>
+
+0000000000001060 <printf@plt>:
+    1060:	ff 25 b2 2f 00 00    	jmp    QWORD PTR [rip+0x2fb2]        # 4018 <exit@plt+0x2f88>
+    1066:	68 03 00 00 00       	push   0x3
+    106b:	e9 b0 ff ff ff       	jmp    1020 <free@plt-0x10>
+
+0000000000001070 <calloc@plt>:
+    1070:	ff 25 aa 2f 00 00    	jmp    QWORD PTR [rip+0x2faa]        # 4020 <exit@plt+0x2f90>
+    1076:	68 04 00 00 00       	push   0x4
+    107b:	e9 a0 ff ff ff       	jmp    1020 <free@plt-0x10>
+
+0000000000001080 <perror@plt>:
+    1080:	ff 25 a2 2f 00 00    	jmp    QWORD PTR [rip+0x2fa2]        # 4028 <exit@plt+0x2f98>
+    1086:	68 05 00 00 00       	push   0x5
+    108b:	e9 90 ff ff ff       	jmp    1020 <free@plt-0x10>
+
+0000000000001090 <exit@plt>:
+    1090:	ff 25 9a 2f 00 00    	jmp    QWORD PTR [rip+0x2f9a]        # 4030 <exit@plt+0x2fa0>
+    1096:	68 06 00 00 00       	push   0x6
+    109b:	e9 80 ff ff ff       	jmp    1020 <free@plt-0x10>

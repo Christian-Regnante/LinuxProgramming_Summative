@@ -1,0 +1,29 @@
+$ ./client 127.0.0.1 34201
+Connected to 127.0.0.1:34201
+University Event Registration Server - please authenticate
+
+Enter your student ID: S10O1
+Authentication FAILED: Unknown student ID (attempt 1 of 3)
+
+Enter your student ID: S1002
+Authentication successful. Welcome, Brian Mugisha (S1002)!
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    0 / 4        4 places left
+  103   Research Conference      0 / 6        6 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 1
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    0 / 4        4 places left
+  103   Research Conference      0 / 6        6 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 0
+Registration session closed. Goodbye, S1002.
+[client exit status: 0]

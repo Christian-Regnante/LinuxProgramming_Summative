@@ -1,0 +1,50 @@
+execve("./program", ["./program"], 0x7fffe0f11210 /* 231 vars */) = 0
+newfstatat(AT_FDCWD, "/etc/ld.so.cache", {st_mode=S_IFREG|0644, st_size=177811, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=177811, ...}) = 0
+mmap(NULL, 177811, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f47cefc5000
+close(3)                                = 0
+brk(NULL)                               = 0x5561ae5f3000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f47cefc3000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+newfstatat(AT_FDCWD, "/etc/ld.so.cache", {st_mode=S_IFREG|0644, st_size=177811, ...}, 0) = 0
+openat(AT_FDCWD, "/usr/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300y\2\0\0\0\0\0"..., 1024) = 1024
+fstat(3, {st_mode=S_IFREG|0755, st_size=2215072, ...}) = 0
+mmap(NULL, 2239312, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f47cec00000
+mmap(0x7f47cec24000, 1552384, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x24000) = 0x7f47cec24000
+mmap(0x7f47ced9f000, 483328, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19f000) = 0x7f47ced9f000
+mmap(0x7f47cee15000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x214000) = 0x7f47cee15000
+mmap(0x7f47cee1b000, 31568, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f47cee1b000
+close(3)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f47cefc0000
+arch_prctl(ARCH_SET_FS, 0x7f47cefc0740) = 0
+set_tid_address(0x7f47cefc0d68)         = 33151
+set_robust_list(0x7f47cefc0a20, 24)     = 0
+rseq({cpu_id_start=0, cpu_id=RSEQ_CPU_ID_UNINITIALIZED, rseq_cs=NULL, flags=0, node_id=0, mm_cid=0, slice_ctrl={request=0, granted=0, __reserved=0}, __reserved=0}, 33, 0, 0x53053053) = 0
+getrandom("\x79\xf7\x1e\xef\x71\x0d\xb9\x59\xa0\x76\x38\x37\x38\xa8\xc1\xd8", 16, GRND_NONBLOCK) = 16
+mprotect(0x7f47cee15000, 16384, PROT_READ) = 0
+mprotect(0x5561826ee000, 4096, PROT_READ) = 0
+mprotect(0x7f47cf036000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+getrandom("\xf3\xff\x0c\x80\x4f\xfa\x4d\x21", 8, GRND_NONBLOCK) = 8
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0x1), ...}) = 0
+brk(NULL)                               = 0x5561ae5f3000
+brk(0x5561ae614000)                     = 0x5561ae614000
+write(1, "=== Bank Transaction Processing "..., 43) = 43
+write(1, "Opening balance        :    1000"..., 37) = 37
+write(1, "Transaction 1001: DEPOSIT       "..., 63) = 63
+write(1, "Transaction 1002: WITHDRAWAL    "..., 63) = 63
+write(1, "Transaction 1003: DEPOSIT       "..., 63) = 63
+write(1, "Transaction 1004: WITHDRAWAL    "..., 63) = 63
+write(1, "Transaction 1005: WITHDRAWAL    "..., 74) = 74
+write(1, "Transaction 1006: DEPOSIT       "..., 63) = 63
+write(1, "\n", 1)                       = 1
+write(1, "========== Account Summary ====="..., 38) = 38
+write(1, "Transactions processed : 6\n", 27) = 27
+write(1, "Total deposits         :     876"..., 36) = 36
+write(1, "Total withdrawals      :    1400"..., 36) = 36
+write(1, "Final account balance  :     475"..., 36) = 36
+write(1, "================================"..., 38) = 38
+exit_group(0)                           = ?
++++ exited with 0 +++

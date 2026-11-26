@@ -1,0 +1,68 @@
+[19:56:20.224] server listening on port 34201 | 20 authorised students | idle timeout 120 s | max clients 64
+[19:56:20.224] 0 registration(s) restored from registrations.csv (fresh start)
+[19:56:20.224] events:
+[19:56:20.224]   101 AI Workshop            0/5  []
+[19:56:20.224]   102 Cybersecurity Seminar  0/4  []
+[19:56:20.224]   103 Research Conference    0/6  []
+[19:56:20.229] client 127.0.0.1:48092 connected | active clients: 1
+[19:56:20.229] client 127.0.0.1:48092 (S1001): authenticated as Amina Uwase
+[19:56:20.270] client 127.0.0.1:48092 (S1001): REGISTERED for 101 AI Workshop - seat 1/5
+[19:56:20.311] client 127.0.0.1:48092 (S1001): session ended - client quit normally | active clients: 0
+[19:56:20.315] client 127.0.0.1:48098 connected | active clients: 1
+[19:56:20.315] client 127.0.0.1:48098: AUTH FAILED for 'X9999' (attempt 1/3)
+[19:56:20.315] client 127.0.0.1:48098: AUTH FAILED for 'S9999' (attempt 2/3)
+[19:56:20.315] client 127.0.0.1:48098: AUTH FAILED for 'abc!' (attempt 3/3)
+[19:56:20.315] client 127.0.0.1:48098: session ended - too many failed authentication attempts | active clients: 0
+[19:56:20.317] client 127.0.0.1:48114 connected | active clients: 1
+[19:56:20.317] client 127.0.0.1:48114: AUTH FAILED for 'S10O1' (attempt 1/3)
+[19:56:20.317] client 127.0.0.1:48114 (S1002): authenticated as Brian Mugisha
+[19:56:20.400] client 127.0.0.1:48114 (S1002): session ended - client quit normally | active clients: 0
+[19:56:20.402] client 127.0.0.1:48126 connected | active clients: 1
+[19:56:20.402] client 127.0.0.1:48126 (S1003): authenticated as Claire Ingabire
+[19:56:20.444] client 127.0.0.1:48126 (S1003): REGISTERED for 103 Research Conference - seat 1/6
+[19:56:20.444] client 127.0.0.1:48126 (S1003): duplicate registration for 103 rejected
+[19:56:20.485] client 127.0.0.1:48126 (S1003): session ended - client quit normally | active clients: 0
+[19:56:20.490] client 127.0.0.1:48140 connected | active clients: 1
+[19:56:20.490] client 127.0.0.1:48140 (S1004): authenticated as David Habimana
+[19:56:20.494] client 127.0.0.1:48156 connected | active clients: 2
+[19:56:20.497] client 127.0.0.1:48158 connected | active clients: 3
+[19:56:20.498] client 127.0.0.1:48158 (S1007): authenticated as Grace Umutoni
+[19:56:20.498] client 127.0.0.1:48164 connected | active clients: 4
+[19:56:20.499] client 127.0.0.1:48156 (S1005): authenticated as Esther Mukamana
+[19:56:20.499] client 127.0.0.1:48172 connected | active clients: 5
+[19:56:20.499] client 127.0.0.1:48168 connected | active clients: 6
+[19:56:20.500] client 127.0.0.1:48172 (S1006): authenticated as Felix Nshuti
+[19:56:20.500] client 127.0.0.1:48168 (S1009): authenticated as Irene Mutesi
+[19:56:20.500] client 127.0.0.1:48164 (S1008): authenticated as Henry Kayitare
+[19:56:20.771] client 127.0.0.1:48158 (S1007): REGISTERED for 102 Cybersecurity Seminar - seat 1/4
+[19:56:20.771] client 127.0.0.1:48168 (S1009): REGISTERED for 102 Cybersecurity Seminar - seat 2/4
+[19:56:20.772] client 127.0.0.1:48164 (S1008): REGISTERED for 102 Cybersecurity Seminar - seat 3/4
+[19:56:20.772] client 127.0.0.1:48140 (S1004): REGISTERED for 102 Cybersecurity Seminar - seat 4/4
+[19:56:20.773] client 127.0.0.1:48156 (S1005): event 102 FULL (4/4) - registration rejected
+[19:56:20.774] client 127.0.0.1:48172 (S1006): event 102 FULL (4/4) - registration rejected
+[19:56:22.274] client 127.0.0.1:48158 (S1007): session ended - client quit normally | active clients: 5
+[19:56:22.274] client 127.0.0.1:48168 (S1009): session ended - client quit normally | active clients: 4
+[19:56:22.275] client 127.0.0.1:48164 (S1008): session ended - client quit normally | active clients: 3
+[19:56:22.275] client 127.0.0.1:48140 (S1004): session ended - client quit normally | active clients: 2
+[19:56:22.276] client 127.0.0.1:48172 (S1006): session ended - client quit normally | active clients: 1
+[19:56:22.277] client 127.0.0.1:48156 (S1005): session ended - client quit normally | active clients: 0
+[19:56:22.280] client 127.0.0.1:36210 connected | active clients: 1
+[19:56:22.281] client 127.0.0.1:36210 (S1010): authenticated as James Ndayisaba
+[19:56:22.363] client 127.0.0.1:36210 (S1010): event 102 FULL (4/4) - registration rejected
+[19:56:22.363] client 127.0.0.1:36210 (S1010): session ended - client quit normally | active clients: 0
+[19:56:22.366] client 127.0.0.1:36226 connected | active clients: 1
+[19:56:22.367] client 127.0.0.1:36226 (S1011): authenticated as Kevin Niyonzima
+[19:56:22.408] client 127.0.0.1:36226 (S1011): REGISTERED for 103 Research Conference - seat 2/6
+[19:56:22.449] client 127.0.0.1:36226 (S1011): session ended - DISCONNECTED UNEXPECTEDLY (connection closed without QUIT) | active clients: 0
+[19:56:22.455] client 127.0.0.1:36242 connected | active clients: 1
+[19:56:22.455] client 127.0.0.1:36242 (S1011): authenticated as Kevin Niyonzima
+[19:56:22.578] client 127.0.0.1:36242 (S1011): session ended - client quit normally | active clients: 0
+[19:56:22.581] client 127.0.0.1:36256 connected | active clients: 1
+[19:56:22.582] client 127.0.0.1:36256 (S1012): authenticated as Linda Uwimana
+[19:56:22.587] shutdown requested - closing 1 active session(s)
+[19:56:22.588] client 127.0.0.1:36256 (S1012): session ended - server shutdown | active clients: 0
+[19:56:22.588] final registrations:
+[19:56:22.588]   101 AI Workshop            1/5  [S1001]
+[19:56:22.588]   102 Cybersecurity Seminar  4/4  [S1007, S1009, S1008, S1004]
+[19:56:22.588]   103 Research Conference    2/6  [S1003, S1011]
+[19:56:22.588] server stopped

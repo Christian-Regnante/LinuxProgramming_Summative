@@ -1,0 +1,17 @@
+test_01_welcome_and_unauthenticated_access (__main__.TestRegistrationServer.test_01_welcome_and_unauthenticated_access) ... ok
+test_02_authentication (__main__.TestRegistrationServer.test_02_authentication) ... ok
+test_03_three_failed_attempts_disconnect (__main__.TestRegistrationServer.test_03_three_failed_attempts_disconnect) ... ok
+test_04_list_register_duplicate_full_unknown (__main__.TestRegistrationServer.test_04_list_register_duplicate_full_unknown) ... ok
+test_05_tcp_framing (__main__.TestRegistrationServer.test_05_tcp_framing) ... ok
+test_06_unexpected_disconnection (__main__.TestRegistrationServer.test_06_unexpected_disconnection) ... ok
+test_07_idle_timeout (__main__.TestRegistrationServer.test_07_idle_timeout) ... ok
+test_08_server_full (__main__.TestRegistrationServer.test_08_server_full) ... ok
+test_09_concurrent_last_seats (__main__.TestRegistrationServer.test_09_concurrent_last_seats)
+All 20 authorised students race for the 6 seats of event 103 at the same instant. ... ok
+test_10_persistence_across_restart (__main__.TestRegistrationServer.test_10_persistence_across_restart) ... ok
+test_11_graceful_shutdown_notifies_clients (__main__.TestRegistrationServer.test_11_graceful_shutdown_notifies_clients) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.795s
+
+OK

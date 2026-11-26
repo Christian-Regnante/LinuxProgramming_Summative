@@ -1,0 +1,25 @@
+execve("./sensor_stats", ["./sensor_stats"], 0x7fff7074aba0 /* 231 vars */) = 0
+open("sensor_readings.txt", O_RDONLY)   = 3
+read(3, "25\n30\ninvalid\n18\n42\n-5\n\n100\n0\n10"..., 4096) = 52
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+write(1, "Total records: ", 15)         = 15
+write(1, "15", 2)                       = 2
+write(1, "\n", 1)                       = 1
+write(1, "Valid measurements: ", 20)    = 20
+write(1, "8", 1)                        = 1
+write(1, "\n", 1)                       = 1
+write(1, "Invalid measurements: ", 22)  = 22
+write(1, "7", 1)                        = 1
+write(1, "\n", 1)                       = 1
+write(1, "Sum of valid measurements: ", 27) = 27
+write(1, "355", 3)                      = 3
+write(1, "\n", 1)                       = 1
+write(1, "Minimum measurement: ", 21)   = 21
+write(1, "0", 1)                        = 1
+write(1, "\n", 1)                       = 1
+write(1, "Maximum measurement: ", 21)   = 21
+write(1, "100", 3)                      = 3
+write(1, "\n", 1)                       = 1
+exit(0)                                 = ?
++++ exited with 0 +++

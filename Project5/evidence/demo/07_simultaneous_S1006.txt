@@ -1,0 +1,31 @@
+$ ./client 127.0.0.1 34201
+Connected to 127.0.0.1:34201
+University Event Registration Server - please authenticate
+
+Enter your student ID: S1006
+Authentication successful. Welcome, Felix Nshuti (S1006)!
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    0 / 4        4 places left
+  103   Research Conference      1 / 6        5 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 2
+Enter the ID of the event to register for: 102
+>> NOT REGISTERED: the event is full - 102 Cybersecurity Seminar has reached its capacity of 4.
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 1
+
+  ID    Event                    Registered   Availability
+  ----- ------------------------ ----------   ------------
+  101   AI Workshop              1 / 5        4 places left
+  102   Cybersecurity Seminar    4 / 4        FULL
+  103   Research Conference      1 / 6        5 places left
+
+Menu:  1) List events   2) Register for an event   3) My registrations   0) Exit
+Choose an option: 0
+Registration session closed. Goodbye, S1006.
+[client exit status: 0]

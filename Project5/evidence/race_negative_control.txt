@@ -1,0 +1,21 @@
+Injected change (check and update in two separate critical sections):
+    @@ -292,8 +292,10 @@
+                the capacity check and the update. It widens the window in which
+                a race could happen; because the lock is still held, competing
+                threads simply wait. Used by the last-seat stress test. */
+    +        pthread_mutex_unlock(&events_lock);   /* INJECTED BUG: lock released after the check */
+             if (opt_race_delay_ms > 0)
+                 sleep_ms(opt_race_delay_ms);
+    +        pthread_mutex_lock(&events_lock);     /* ...and re-acquired for the update */
+             snprintf(e->attendees[e->registered], STUDENT_ID_MAX, "%s", student);
+             e->registered++;
+             if (state_file) {
+
+Race test against the BUGGY server:
+round  1: 10 racers -> 10 registered (S1004,S1005,S1006,S1007,S1008,S1009,S1010,S1011,S1012,S1013), 0 rejected as full, final 13/4  FAIL
+round  2: 10 racers -> 10 registered (S1004,S1005,S1006,S1007,S1008,S1009,S1010,S1011,S1012,S1013), 0 rejected as full, final 13/4  FAIL
+round  3: 10 racers -> 10 registered (S1004,S1005,S1006,S1007,S1008,S1009,S1010,S1011,S1012,S1013), 0 rejected as full, final 13/4  FAIL
+Race test: 0 of 3 rounds passed
+
+=> The buggy server over-books the event, so the race test detects the bug;
+   the real server passes it because check and update share one critical section.

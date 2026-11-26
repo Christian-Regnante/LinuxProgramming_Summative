@@ -1,0 +1,13 @@
+$ nm -D --defined-only sensor_processor*.so   # exported symbols
+0000000000002350 T PyInit_sensor_processor
+
+$ python3 -c 'import sensor_processor as sp; print(sp.__file__); print(sp.__doc__); print(sp.moving_average.__doc__)'
+sensor_processor.cpython-314-x86_64-linux-gnu.so
+Native C routines for filtering and analysing IoT sensor readings.
+
+All functions accept a list or tuple of real numbers (int or float).
+
+moving_average(data, window) -> list
+
+Return the simple moving averages of `data` for the given window size
+(len(data) - window + 1 values). Requires 1 <= window <= len(data).

@@ -1,0 +1,7 @@
+Linux 7.2.15-1-omarchy x86_64
+gcc (GCC) 16.2.1 20260810
+GNU readelf (GNU Binutils) 2.47
+GNU objdump (GNU Binutils) 2.47
+strace -- version 7.2
+GNU gdb (GDB) 18.1
+ldd (GNU libc) 2.44

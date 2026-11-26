@@ -1,0 +1,61 @@
+========================================================================
+ sensor_processor 1.0.0 - demonstration
+========================================================================
+
+[1] Examples from the assignment brief
+  filter_readings([10.5, 25.0, 110.0, 35.5], 20.0, 40.0)
+      -> [25.0, 35.5]
+  count_outliers([10.5, 25.0, 110.0, 35.5], 20.0, 40.0)
+      -> 2
+  moving_average([10.0, 20.0, 30.0, 40.0], 2)
+      -> [15.0, 25.0, 35.0]
+  maximum_difference([10.0, 25.0, 40.0, 15.0])
+      -> 30.0
+  sensor_summary([10.0, 20.0, 30.0, 40.0])
+      -> {'samples': 4, 'minimum': 10.0, 'maximum': 40.0, 'average': 25.0, 'above_average': 2}
+
+[2] Smart-farm soil temperature sensor (acceptable range 15.0..35.0 C)
+  readings            : [21.4, 22.0, 23.1, 3.2, 24.5, 25.8, 48.9, 26.3, 24.9, 23.7, -1.0, 22.6]
+  filter_readings     : [21.4, 22.0, 23.1, 24.5, 25.8, 26.3, 24.9, 23.7, 22.6]
+  count_outliers      : 3
+  moving_average (w=3): [22.167, 16.1, 16.933, 17.833, 33.067, 33.667, 33.367, 24.967, 15.867, 15.1]
+  maximum_difference  : 49.9
+  sensor_summary      : {'samples': 12, 'minimum': -1.0, 'maximum': 48.9, 'average': 22.116666666666664, 'above_average': 8}
+  after removing outliers:
+    sensor_summary    : {'samples': 9, 'minimum': 21.4, 'maximum': 26.3, 'average': 23.811111111111114, 'above_average': 4}
+
+[3] Tuple input containing ints (soil moisture %)
+  readings            : (31, 33, 35, 34, 30, 29, 36)
+  moving_average (w=4): [33.25, 33.0, 32.0, 32.25]
+  sensor_summary      : {'samples': 7, 'minimum': 29.0, 'maximum': 36.0, 'average': 32.57142857142857, 'above_average': 4}
+
+[4] Empty input
+  filter_readings([], 0, 10)
+      -> []
+  count_outliers([], 0, 10)
+      -> 0
+  moving_average([], 1)
+      -> raises ValueError: moving_average(): the dataset is empty (at least one reading is required)
+  maximum_difference([])
+      -> raises ValueError: maximum_difference(): the dataset is empty (at least one reading is required)
+  sensor_summary(())
+      -> raises ValueError: sensor_summary(): the dataset is empty (at least one reading is required)
+
+[5] Invalid input conditions
+  filter_readings('12,15,18', 0, 50)      # string, not list/tuple
+      -> raises TypeError: filter_readings() expects a list or tuple of numbers, got 'str'
+  sensor_summary({1.0, 2.0})              # set is not supported
+      -> raises TypeError: sensor_summary() expects a list or tuple of numbers, got 'set'
+  maximum_difference([12.5, 'error', 9])  # non-numeric element
+      -> raises TypeError: maximum_difference(): element 1 is not a number (got 'str')
+  count_outliers([1.0, 2.0], 40.0, 20.0)  # minimum > maximum
+      -> raises ValueError: count_outliers(): minimum (40) must not be greater than maximum (20)
+  moving_average([1.0, 2.0, 3.0], 0)      # window < 1
+      -> raises ValueError: moving_average(): window must satisfy 1 <= window <= len(data) (got window=0, len(data)=3)
+  moving_average([1.0, 2.0, 3.0], 5)      # window > len(data)
+      -> raises ValueError: moving_average(): window must satisfy 1 <= window <= len(data) (got window=5, len(data)=3)
+  moving_average([1.0, 2.0, 3.0], 1.5)    # window not an int
+      -> raises TypeError: moving_average(): window must be an int, got 'float'
+  sensor_summary([20.0, float('nan')])    # NaN reading
+      -> raises ValueError: sensor_summary(): element 1 is not a finite number (NaN or infinity)
+
