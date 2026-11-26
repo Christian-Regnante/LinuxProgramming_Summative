@@ -53,3 +53,27 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# ---- Summative project additions ----
+# Python build artefacts (Project 3)
+build/
+*.egg-info/
+__pycache__/
+.venv/
+# Rebuildable binaries (Projects 2, 4, 5). Project1/program and program_debug are deliverables and stay tracked.
+Project2/sensor_stats
+Project4/library_reservation
+Project4/library_reservation_tsan
+Project5/server
+Project5/client
+# Report tooling
+node_modules/
+package-lock.json
+~$*.docx
+Project5/server_tsan
+# Project 5 runtime files created when ./server runs in its directory
+Project5/registrations.csv
+Project5/server.log
+
+# Project 2 expected test outputs are hand-derived source files, not build output
+!Project2/tests/expected/*.out
